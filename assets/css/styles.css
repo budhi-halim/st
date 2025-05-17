@@ -1,0 +1,388 @@
+
+/* CSS Variables */
+:root {
+    /* Color Palette - 60-30-10 rule */
+    --primary-color: #ff7e5f;
+    --secondary-color: #feb47b;
+    --accent-color: #7b4397;
+    /* Neutral colors */
+    --bg-color: #fef6f3;
+    --text-color: #433a3f;
+    --light-text: #7a6c74;
+    --card-bg: #ffffff;
+    /* Shadows and effects */
+    --card-shadow: 0 10px 30px rgba(255, 126, 95, 0.15);
+    --input-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    --button-shadow: 0 3px 10px rgba(255, 126, 95, 0.2);
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    /* Border radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    /* Font */
+    --font-family: 'Quicksand', sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+    /* Dynamic viewport height (will be set by JS) */
+    --vh: 1vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow: hidden;
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    font-size: 16px;
+}
+
+input {
+    font-family: var(--font-family);
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* Header */
+.app-header {
+    text-align: center;
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.app-header h1 {
+    font-weight: var(--font-weight-bold);
+    font-size: 2rem;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Calculator Card */
+.calculator-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* Input Section */
+.input-section {
+    margin-bottom: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.input-section h2, .output-section h2 {
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-sm);
+    color: var(--accent-color);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.input-group label {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-medium);
+    width: 2.5rem;
+    flex-shrink: 0;
+}
+
+.number-control {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 2.5rem);
+    max-width: 100%;
+}
+
+.control-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--button-shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 5px rgba(255, 126, 95, 0.1);
+}
+
+.number-input {
+    width: calc(100% - 6rem);
+    height: 3rem;
+    margin: 0 var(--spacing-sm);
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(255, 126, 95, 0.2);
+    background-color: rgba(255, 126, 95, 0.05);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color);
+    box-shadow: var(--input-shadow);
+    -moz-appearance: textfield;
+    min-width: 0;
+    padding: 0 0.5rem;
+}
+
+/* Hide number input arrows */
+.number-input::-webkit-outer-spin-button,
+.number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Calculate Button: animate only on tap/click */
+.calculate-btn {
+    width: 100%;
+    height: 3rem;
+    border-radius: var(--radius-md);
+    border: none;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    box-shadow: var(--button-shadow);
+    transition: transform 0.21s, box-shadow 0.21s, filter 0.11s;
+    margin-top: var(--spacing-sm);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+.calculate-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 5px rgba(255, 126, 95, 0.1);
+}
+/* Desktop-only hover/focus feedback, No animation */
+@media (hover: hover) and (pointer: fine) {
+    .calculate-btn:hover,
+    .calculate-btn:focus {
+        box-shadow: 0 4px 16px rgba(123, 67, 151, 0.1), var(--button-shadow);
+        filter: brightness(1.03);
+        animation: none !important;
+    }
+}
+
+/* Output Section */
+.output-section {
+    background-color: rgba(255, 126, 95, 0.05);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.result-item {
+    background-color: white;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--input-shadow);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.result-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 126, 95, 0.1);
+}
+
+.result-label {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.result-value {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Footer */
+.app-footer {
+    text-align: center;
+    padding: var(--spacing-sm) 0;
+    color: var(--light-text);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* --- Popup Notification for Invalid Input --- */
+.popup-notification {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    background: rgba(40, 36, 49, 0.93);
+    color: #fff;
+    padding: 0.95em 1.7em;
+    border-radius: 18px;
+    font-size: 1.1rem;
+    display: none;
+    opacity: 0;
+    z-index: 9999;
+    transition: opacity 0.24s, transform 0.24s;
+    text-align: center;
+    pointer-events: none;
+    font-weight: 500;
+}
+.popup-notification.show {
+    display: block;
+    opacity: 0.98;
+    transform: translate(-50%, -50%) scale(1.03);
+}
+.popup-notification.fadeout {
+    opacity: 0;
+    transform: translate(-50%, -53%) scale(0.97);
+    transition: opacity 0.45s, transform 0.45s;
+}
+
+/* --- Single Animation for Calculate Button (triggered by JS only) --- */
+@keyframes singlepulse {
+    0%   { transform: scale(1);}
+    40%  { transform: scale(1.09);}
+    55%  { transform: scale(1.04);}
+    100% { transform: scale(1);}
+}
+.calculate-btn.single-pulse {
+    animation: singlepulse 0.64s cubic-bezier(0.4, 0.15, 0.57, 1) 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .app-container {
+        padding: var(--spacing-sm);
+    }
+    .calculator-card {
+        padding: var(--spacing-sm);
+    }
+    .input-group label {
+        width: 2rem;
+    }
+    .number-control {
+        width: calc(100% - 2rem);
+    }
+    .control-btn {
+        width: 2.2rem;
+        height: 2.2rem;
+    }
+    .number-input {
+        width: calc(100% - 5.4rem);
+        margin: 0 0.5rem;
+        font-size: 1rem;
+    }
+    .result-grid {
+        gap: var(--spacing-sm);
+    }
+    .result-item {
+        padding: var(--spacing-sm);
+    }
+    .result-label {
+        font-size: 1rem;
+    }
+    .result-value {
+        font-size: 1.2rem;
+    }
+    .popup-notification {
+        font-size: 0.95rem;
+        padding: 0.7em 1.2em;
+    }
+}
+@media (max-height: 700px) {
+    .app-header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+    }
+    .calculator-card {
+        padding: var(--spacing-sm);
+    }
+    .input-section h2, .output-section h2 {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    .input-group {
+        margin-bottom: var(--spacing-xs);
+    }
+    .calculate-btn {
+        margin-top: var(--spacing-xs);
+        height: 2.5rem;
+    }
+    .result-item {
+        padding: var(--spacing-sm);
+    }
+}
+@media (max-height: 600px) {
+    .app-header {
+        padding-top: var(--spacing-xs);
+        padding-bottom: var(--spacing-xs);
+    }
+    .app-header h1 {
+        font-size: 1.5rem;
+    }
+    .input-section h2, .output-section h2 {
+        font-size: 1rem;
+    }
+    .result-grid {
+        gap: var(--spacing-xs);
+    }
+    .result-item {
+        padding: var(--spacing-xs);
+    }
+    .app-footer {
+        padding: var(--spacing-xs) 0;
+        font-size: 0.8rem;
+    }
+}

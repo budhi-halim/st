@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Recipe Calculator</title>
+    <link rel="stylesheet" href="assets/css/calculator.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <h1>Recipe Calculator</h1>
+        </div>
+        
+        <div class="calculator-card">
+            <div class="input-section">
+                <h2>Input Values</h2>
+                
+                <div class="input-group">
+                    <label for="roll-value">Roll</label>
+                    <div class="number-control">
+                        <button class="control-btn decrease" data-target="roll-value">−</button>
+                        <input type="number" id="roll-value" class="number-input" value="22" min="1" step="1">
+                        <button class="control-btn increase" data-target="roll-value">+</button>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="soy-value">Soy</label>
+                    <div class="number-control">
+                        <button class="control-btn decrease" data-target="soy-value">−</button>
+                        <input type="number" id="soy-value" class="number-input" value="3960" min="1" step="1">
+                        <button class="control-btn increase" data-target="soy-value">+</button>
+                    </div>
+                </div>
+                
+                <button id="calculate-btn" class="calculate-btn">Calculate</button>
+            </div>
+            
+            <div class="output-section">
+                <h2>Results</h2>
+                
+                <div class="result-grid">
+                    <div class="result-item">
+                        <div class="result-label">Water</div>
+                        <div id="water-result" class="result-value">79</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-label">Mold</div>
+                        <div id="mold-result" class="result-value">17.60</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-label">Flour</div>
+                        <div id="flour-result" class="result-value">2640</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-label">Weight</div>
+                        <div id="weight-result" class="result-value">304</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="app-footer">
+            <p>Tap +/- to change by 1<br>Hold for faster changes</p>
+        </div>
+        <!-- Popup notification placeholder -->
+        <div id="popup-notification" class="popup-notification" style="display:none"></div>
+    </div>
+    
+    <script src="assets/js/ts-2.js"></script>
+</body>
+</html>
